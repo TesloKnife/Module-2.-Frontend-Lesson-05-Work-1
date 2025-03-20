@@ -1,0 +1,47 @@
+.app {
+	max-width: 1280px;
+	margin: 0 auto;
+	padding: 2rem;
+	text-align: center;
+}
+
+.loader {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 25px;
+	height: 25px;
+	border: 5px solid gray;
+	border-radius: 50%;
+	border-left-color: transparent;
+	animation: loader 1s infinite;
+}
+
+@keyframes loader {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.todoList {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	margin-top: 20px;
+	align-items: center;
+}
+
+.todo {
+	display: flex;
+	justify-content: space-between;
+	width: 60%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	background-color: #f9f9f9;
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
