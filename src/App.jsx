@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import debounce from 'lodash.debounce';
 import styles from './app.module.css';
 
 export const App = () => {
@@ -32,6 +33,11 @@ export const App = () => {
 	const sortedTodos = isSorted
 		? [...filteredTodos].sort((a, b) => a.title.localeCompare(b.title))
 		: filteredTodos;
+
+	// Обработчик изменения searchTerm с debounce
+	const handleSearchChange = debounce((value) => {
+		setSearchTerm(value);
+	}, 500); // Задержка в 500 мс
 
 	// Отправка данных на сервер
 	const requestAddTodo = () => {
@@ -100,8 +106,7 @@ export const App = () => {
 				<input
 					type="text"
 					placeholder="Поиск..."
-					value={searchTerm}
-					onChange={(e) => setSearchTerm(e.target.value)}
+					onChange={(e) => handleSearchChange(e.target.value)} // Вызываем debounce
 				/>
 
 				<button onClick={toggleSort}>
